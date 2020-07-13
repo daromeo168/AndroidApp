@@ -18,11 +18,9 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="191dp"
-        android:layout_height="201dp"
         android:src="@drawable/idl"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="205dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -32,8 +30,8 @@
         android:textColor="@color/colorText"
         android:textSize="75dp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="431dp" />
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="343dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

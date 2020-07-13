@@ -1,40 +1,32 @@
 package com.example.androidapp;
 
 public class Email {
-    private String sender;
-    private String subject;
-    private String body;
-    private long time;
+   private String fullName;
+   private String email;
+   private String City;
 
-    public String getSender() {
-        return sender;
+
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getEmail() {
+        return email;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getBody() {
-        return body;
+    public String getCity() {
+        return City;
     }
 
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public long getTime() {
-        return time;
-    }
-
-    public void setTime(long time) {
-        this.time = time;
+    public void setCity(String city) {
+        City = city;
     }
 }
