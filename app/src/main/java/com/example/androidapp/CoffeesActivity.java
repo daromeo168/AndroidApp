@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -17,8 +18,9 @@ import com.google.gson.Gson;
 
 import java.util.Arrays;
 
-public class CoffeesActivity extends AppCompatActivity {
+public class CoffeesActivity extends AppCompatActivity implements EmailsAdapter.OnNoteListener{
     private RecyclerView recyclerView;
+    Email[] emails;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,20 +31,20 @@ public class CoffeesActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        loadBuyers();
+        loadBuyers(this);
 
     }
 
 
-    private void loadBuyers() {
+    private void loadBuyers(final EmailsAdapter.OnNoteListener onNoteListener) {
         String url = "http://10.0.2.2/android/FinalData.json";
 
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
-                Email[] emails = gson.fromJson(response,Email[].class);
-                EmailsAdapter email = new EmailsAdapter(emails);
+                emails = gson.fromJson(response,Email[].class);
+                EmailsAdapter email = new EmailsAdapter(emails, onNoteListener);
                 recyclerView.setAdapter(email);
                 Log.d("ProductsError","success"+ Arrays.toString(emails));
             }
@@ -59,6 +61,16 @@ public class CoffeesActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onNoteClick(int position) {
+        Log.d("click","position: "+position);
+        Intent intent = new Intent(this, DetailCoffeesActivity.class);
+        intent.putExtra("fullName",emails[position].getFullName());
+        intent.putExtra("email",emails[position].getEmail());
+        intent.putExtra("City",emails[position].getCity());
+
+        startActivity(intent);
+    }
 }
 
 

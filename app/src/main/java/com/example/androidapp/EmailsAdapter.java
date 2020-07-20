@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class EmailsAdapter extends RecyclerView.Adapter<EmailViewHolder> {
     //Dataset
     private Email[] emails;
+    private OnNoteListener mOnNoteListener;
 
-    public EmailsAdapter(Email[] emails) {
+    public EmailsAdapter(Email[] emails,OnNoteListener onNoteListener) {
         this.emails = emails;
+        this.mOnNoteListener = onNoteListener;
     }
 
     @NonNull
@@ -21,7 +23,7 @@ public class EmailsAdapter extends RecyclerView.Adapter<EmailViewHolder> {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View itemView = layoutInflater.inflate(R.layout.view_holder_email, parent, false);
 
-        return new EmailViewHolder(itemView);
+        return new EmailViewHolder(itemView,mOnNoteListener);
     }
 
     @Override
@@ -34,4 +36,14 @@ public class EmailsAdapter extends RecyclerView.Adapter<EmailViewHolder> {
     public int getItemCount() {
         return emails.length;
     }
+
+
+
+    public interface OnNoteListener{
+        void onNoteClick(int position);
+
+    }
+
+
 }
+

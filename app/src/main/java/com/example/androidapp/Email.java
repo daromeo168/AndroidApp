@@ -4,7 +4,15 @@ public class Email {
    private String fullName;
    private String email;
    private String City;
+   private String Image;
 
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
+    }
 
     public String getFullName() {
         return fullName;
